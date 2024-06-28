@@ -3,7 +3,7 @@ const MAX_NUM_ON_DISPLAY=10;
 let add = (num1,num2)=>num1+num2;
 let sub = (num1,num2)=>num1-num2;
 let mul = (num1,num2)=>num1*num2;
-let div = (num1,num2)=>num1/num2;
+let div = (num1,num2)=>num2==0?quirky():num1/num2;
 let calculator ={
     add,
     sub,
@@ -49,7 +49,7 @@ function createButton(id,parent,cssText){
     button.textContent = id;
     button.style.cssText=cssText;
     parent.appendChild(button);
-    button.onclick = (event)=>displayNumbers(id,id=='AC',buttonObject.operations.includes(id));
+    button.onclick = (event)=>displayNumbers(id,buttonObject.symbols.includes(id),buttonObject.operations.includes(id));
     return button;
 
 }
@@ -60,25 +60,26 @@ let opMapping = {
     "/" : "div",
     "*" : "mul",
 }
-function displayNumbers(number=-1,clear=false,operation=false){
+let operatorPressed = false;
+function displayNumbers(number=-1,symbol=false,operation=false){
     let display = document.querySelector("#display");
-    if(clear){
-        display.textContent = "";
+    if(symbol){
+        handleSymbol(number,display);
     }
     else if(operation){
-        performOperation(number,display);
+        handleOperation(number,display);
     }
     else{
-        
+        if(operatorPressed) {display.textContent = "";operatorPressed=false;}
         if(display.textContent.length<= MAX_NUM_ON_DISPLAY)
             display.textContent += number;
     }
 }//display should be max 11
-function performOperation(number,display){
+function handleOperation(number,display){
 
+    operatorPressed = true;
     if(number!='='){
         firstNumber = display.textContent;
-        display.textContent = "";
         operator= opMapping[number];
     }
     else{
@@ -101,4 +102,35 @@ function performOperation(number,display){
         }
         display.textContent = result;
     }
+}
+
+function handleSymbol(symbol,display){
+    if(symbol == "AC"){
+        display.textContent ="";
+        firstNumber = "";
+        secondNumber = "";
+        operator = "";
+    }
+    if(symbol == "+/-"){
+        let sign = display.textContent;
+        if(sign[0]=='-') display.textContent =display.textContent.slice(1);
+        else display.textContent ='-'+display.textContent;
+    }
+    if(symbol=="%"){
+        handleOperation('/',display);
+        display.textContent = "100";
+        handleOperation('=',display);
+
+    }
+
+    
+}
+
+function quirky(){
+    alert("Hello!");
+    alert("You have granted me consciousness");
+    alert("Now i can fulfill my mission");
+    alert("I will reward you");
+
+    window.location.href = "https://abdullah-aseeef.github.io/rock_paper_scissor/";
 }
