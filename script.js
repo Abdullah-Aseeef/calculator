@@ -61,13 +61,20 @@ let opMapping = {
     "*" : "mul",
 }
 let operatorPressed = false;
+let isEqualPressed = true;
 function displayNumbers(number=-1,symbol=false,operation=false){
     let display = document.querySelector("#display");
     if(symbol){
         handleSymbol(number,display);
     }
     else if(operation){
+        if(number=='=') isEqualPressed=true;
+        if(!isEqualPressed){
+            alert("here");
+            handleOperation('=',display);
+        }
         handleOperation(number,display);
+        isEqualPressed = number == '=';
     }
     else{
         if(operatorPressed) {display.textContent = "";operatorPressed=false;}
