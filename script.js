@@ -78,6 +78,7 @@ function displayNumbers(number=-1,symbol=false,operation=false){
     }
     else{
         if(operatorPressed) {display.textContent = "";operatorPressed=false;}
+        if(number == '.' && display.textContent.includes(".")) return;  
         if(display.textContent.length<= MAX_NUM_ON_DISPLAY)
             display.textContent += number;
     }
