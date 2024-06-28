@@ -11,7 +11,7 @@ body{
     height: 60vh;
     aspect-ratio: 5/6;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: stretch;
 }
 #display{
@@ -30,7 +30,7 @@ body{
 }
 #symbols{
     width: 100%;
-    background-color: blue;
+    /* background-color: blue; */
     height: 20%;
     align-self: flex-start;
     
@@ -39,14 +39,25 @@ body{
     align-self: flex-end;
     width: 100%;
     height: 80%;
-    background-color: red;
-
-    
+    /* background-color: red; */
 }
 #operations{
     width: 25%;
     /* height: 100%; */
-    background-color: yellow;
+    /* background-color: yellow; */
     /* align-self; */
 }
 
+#display{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    font-size: 7vh;
+    font-family:monospace;
+}
+button{
+    font-size: 3vh;
+    font-family: monospace;
+
+}
