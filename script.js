@@ -21,6 +21,17 @@ let buttonObject = {
     operations : ['/',"*","-","+","="],
     numbers : [7,8,9,4,5,6,1,2,3,0,"."]
 }
+let keypress = {
+    "Backspace": 'AC',
+    "%": 'perc',
+    "/": 'div',
+    '+':'add',
+    '-': 'sub',
+    '*':'mul',
+    '.': 'dot',
+    '=':'equal',
+    'Enter':'equal',
+}
 buttonObject.numbers = buttonObject.numbers.map((num)=>num.toString());
 buttonWidth=buttons.clientWidth/4;
 buttonHeight=buttons.clientHeight/5;
@@ -42,10 +53,21 @@ for(key in buttonObject){
     });
 }
 
+addEventListener('keydown',(event)=>{
+    // document.createEvent('click')
+    if(!(buttonObject.numbers.includes(event.key) || (event.key in keypress)   ))
+        return;
+    const newEvent = new MouseEvent("click");
+    console.log(([event.key]));
+    let button=document.querySelector(`.id${event.key in keypress? keypress[event.key]:event.key}`)
+    button.dispatchEvent(newEvent);
 
+    // dispatchEvent()
+});
 function createButton(id,parent,cssText){
     let button = document.createElement("button");
     button.setAttribute("id",id);
+    button.setAttribute("class",`id${id in keypress? keypress[id]:id}`);
     button.textContent = id;
     button.style.cssText=cssText;
     parent.appendChild(button);
@@ -70,7 +92,6 @@ function displayNumbers(number=-1,symbol=false,operation=false){
     else if(operation){
         if(number=='=') isEqualPressed=true;
         if(!isEqualPressed){
-            alert("here");
             handleOperation('=',display);
         }
         handleOperation(number,display);
@@ -142,3 +163,12 @@ function quirky(){
 
     window.location.href = "https://abdullah-aseeef.github.io/rock_paper_scissor/";
 }
+
+// function disableOperations(){
+//     let operations = document.querySelectorAll("#operations");
+//     operations.forEach((operation)=>operation.disabled=true);
+// }
+// function enableOperations(){
+//     let operations = document.querySelectorAll("#operations");
+//     operations.forEach((operation)=>operation.disabled=false);
+// }
