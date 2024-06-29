@@ -14,6 +14,9 @@ let calculator ={
     },
 
 }
+let backgroundText = document.querySelector("#text");
+for(let i =0; i <30;i++)
+backgroundText.textContent += 'CALCULATOR  ';
 
 let buttons = document.querySelector("#buttons");
 let buttonObject = {
@@ -55,7 +58,6 @@ for(key in buttonObject){
 // let operators = buttons.querySelector("#operations");
 // console.log(operators);
 // operators.addEventListener('click',(event)=>{
-    
 // });
 
 addEventListener('keydown',(event)=>{
