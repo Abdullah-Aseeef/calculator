@@ -15,7 +15,7 @@ let calculator ={
 
 }
 let backgroundText = document.querySelector("#text");
-for(let i =0; i <30;i++)
+for(let i =0; i <50;i++)
 backgroundText.textContent += 'CALCULATOR  ';
 
 let buttons = document.querySelector("#buttons");
