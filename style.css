@@ -13,9 +13,10 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: stretch;
+    padding: 12px;
 }
 #display{
-    background-color: gray;
+    background-color: lightgray;
     height: 10vh;
     /* width: 50vh; */
 }
@@ -55,9 +56,22 @@ body{
     padding: 10px;
     font-size: 7vh;
     font-family:monospace;
+    border-radius: 10px;
+    margin: 5px;
 }
 button{
     font-size: 3vh;
     font-family: monospace;
+    border-radius: 10px;
 
+}
+
+#operations > button{
+    background-color: darkgoldenrod;
+}
+#numbers > button{
+    background-color: darkolivegreen;
+}
+#symbols > button{
+    background-color: darkslateblue;
 }

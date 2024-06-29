@@ -52,6 +52,11 @@ for(key in buttonObject){
         }
     });
 }
+// let operators = buttons.querySelector("#operations");
+// console.log(operators);
+// operators.addEventListener('click',(event)=>{
+    
+// });
 
 addEventListener('keydown',(event)=>{
     // document.createEvent('click')
